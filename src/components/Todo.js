@@ -28,33 +28,31 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 					}}
 				>
 					<Checkbox color='success' onClick={handleCheckboxClick} />
-					<Card sx={{ p: 1, alignSelf: 'center',}}>
-							<Typography
-								sx={{
-									fontSize: 18,
-									textDecoration: todo.completed ? 'line-through' : null,
-								}}
-								color='text.secondary'
-								gutterBottom
-							>
-								{todo.title}
-							</Typography>
-						</Card>
-					
-						
-						
+					<Card sx={{ p: 1, alignSelf: 'center' }}>
 						<Typography
-							variant='body2'
 							sx={{
-								fontSize: 14,
+								fontSize: 18,
 								textDecoration: todo.completed ? 'line-through' : null,
-								alignSelf: 'center'
 							}}
+							color='text.secondary'
+							gutterBottom
 						>
-							{todo.description}
+							{todo.title}
 						</Typography>
-						
-						<Box
+					</Card>
+
+					<Typography
+						variant='body2'
+						sx={{
+							fontSize: 14,
+							textDecoration: todo.completed ? 'line-through' : null,
+							alignSelf: 'center',
+						}}
+					>
+						{todo.description}
+					</Typography>
+
+					<Box
 						sx={{
 							display: 'flex',
 							flexDirection: 'column',
@@ -78,7 +76,6 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 							<ClosedIcon />
 						</IconButton>
 					</Box>
-					
 				</CardContent>
 			</Card>
 		</ListItem>
