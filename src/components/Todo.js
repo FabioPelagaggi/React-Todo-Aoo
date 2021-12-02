@@ -28,11 +28,12 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 					}}
 				>
 					<Checkbox color='success' onClick={handleCheckboxClick} />
-					<Card sx={{ p: 1, alignSelf: 'center' }}>
+					<Card sx={{ p: 1, alignSelf: 'center', flexShrink: 0 }}>
 						<Typography
 							sx={{
 								fontSize: 18,
 								textDecoration: todo.completed ? 'line-through' : null,
+								flexShrink: 2
 							}}
 							color='text.secondary'
 							gutterBottom
@@ -47,6 +48,8 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 							fontSize: 14,
 							textDecoration: todo.completed ? 'line-through' : null,
 							alignSelf: 'center',
+							pl: 5,
+							width: '80%'
 						}}
 					>
 						{todo.description}
