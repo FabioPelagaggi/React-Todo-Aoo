@@ -5,7 +5,7 @@ import { List } from '@mui/material'
 function TodoList({ todos, toggleComplete, removeTodo }) {
 	return (
 		<List sx={{ width: '100%', minWidth: '100%', bgcolor: 'background.paper' }}>
-			{todos.map((todo) => (
+			{todos.slice(0).reverse().map((todo) => (
 				<Todo
 					key={todo.id}
 					todo={todo}
