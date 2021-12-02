@@ -1,4 +1,10 @@
 import React from 'react'
+import { Checkbox, IconButton, ListItem, Typography } from '@mui/material'
+import ClosedIcon from '@mui/icons-material/Close'
+
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
 
 function Todo({ todo, toggleComplete, removeTodo }) {
 	function handleCheckboxClick() {
@@ -9,18 +15,73 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 	}
 
 	return (
-		<div style={{ display: 'flex' }}>
-			<input type='checkbox' onClick={handleCheckboxClick} />
-			<li
-				style={{
-					color: 'white',
-					textDecoration: todo.completed ? 'line-through' : null,
-				}}
-			>
-				{todo.task}
-			</li>
-			<button onClick={handleRemoveClick}>X</button>
-		</div>
+		<ListItem>
+			<Card sx={{ minWidth: '100%' }}>
+				<CardContent
+					sx={{
+						display: 'flex',
+						flexDirection: 'row',
+						justifyContent: 'space-between',
+						p: 2,
+						mr: 1,
+						bgcolor: 'background.paper',
+					}}
+				>
+					<Checkbox color='success' onClick={handleCheckboxClick} />
+					<Card sx={{ p: 1, alignSelf: 'center',}}>
+							<Typography
+								sx={{
+									fontSize: 18,
+									textDecoration: todo.completed ? 'line-through' : null,
+								}}
+								color='text.secondary'
+								gutterBottom
+							>
+								{todo.title}
+							</Typography>
+						</Card>
+					
+						
+						
+						<Typography
+							variant='body2'
+							sx={{
+								fontSize: 14,
+								textDecoration: todo.completed ? 'line-through' : null,
+								alignSelf: 'center'
+							}}
+						>
+							{todo.description}
+						</Typography>
+						
+						<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							justifyContent: 'space-between',
+							p: 2,
+							mr: 6,
+							bgcolor: 'background.paper',
+						}}
+					>
+						<Typography
+							sx={{
+								fontSize: 12,
+								alignSelf: 'end',
+							}}
+							color='text.secondary'
+							gutterBottom
+						>
+							{todo.date}
+						</Typography>
+						<IconButton onClick={handleRemoveClick} sx={{ alignSelf: 'end' }}>
+							<ClosedIcon />
+						</IconButton>
+					</Box>
+					
+				</CardContent>
+			</Card>
+		</ListItem>
 	)
 }
 export default Todo

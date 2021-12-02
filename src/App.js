@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import TodoForm from './components/TodoForm'
+import AddNewTask from './components/NewTask'
 import TodoList from './components/TodoList'
+import Typography from '@mui/material/Typography'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
 
 const LOCAL_STORAGE_KEY = 'react-todo-list-todos'
 
@@ -42,16 +45,29 @@ function App() {
 	}
 
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<p>React Todo</p>
-				<TodoForm addTodo={addTodo} />
-				<TodoList
-					todos={todos}
-					toggleComplete={toggleComplete}
-					removeTodo={removeTodo}
-				/>
-			</header>
+		<div className='App' style={{ width: '100%' }}>
+			<AppBar position='static' style={{ width: '100%' }}>
+				<Toolbar>
+					{/* <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton> */}
+					<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+						React MUI Todo App
+					</Typography>
+					<AddNewTask keepMounted addTodo={addTodo} />
+				</Toolbar>
+			</AppBar>
+			<TodoList
+				todos={todos}
+				toggleComplete={toggleComplete}
+				removeTodo={removeTodo}
+			/>
 		</div>
 	)
 }
