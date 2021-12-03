@@ -3,12 +3,14 @@ import { Button, TextField } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import TextareaAutosize from '@mui/base/TextareaAutosize'
 
+
 function TodoForm({ addTodo, handleClose }) {
 	const [todo, setTodo] = useState({
 		id: '',
 		title: '',
 		description: '',
 		date: '',
+		priority: 'Ex. Low',
 		completed: false,
 	})
 
@@ -18,22 +20,28 @@ function TodoForm({ addTodo, handleClose }) {
 	function handleDescriptionInputChange(e) {
 		setTodo({ ...todo, description: e.target.value })
 	}
-
+	function handlePriorityInputChange(e){
+		setTodo({ ...todo, priority: e.target.value})
+	}
 	function handleSubmit(e) {
 		e.preventDefault()
 		if (todo.title.trim()) {
-			addTodo({ ...todo, id: Date.now(), date: new Date().toLocaleDateString('en-GB') })
-			setTodo({ ...todo, title: '', description: '' })
+			addTodo({
+				...todo,
+				id: Date.now(),
+				date: new Date().toLocaleDateString('en-GB'),
+			})
+			setTodo({ ...todo, title: '', description: '', priority: 'Ex. Low' })
 		}
 		handleClose()
 	}
 
 	return (
-		<form className="todo-form-main" onSubmit={handleSubmit}>
+		<form className='todo-form-main' onSubmit={handleSubmit}>
 			<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
 				New Task
 			</Typography>
-			<div className="todo-form">
+			<div className='todo-form'>
 				<TextField
 					label='Title'
 					name='title'
@@ -43,8 +51,17 @@ function TodoForm({ addTodo, handleClose }) {
 					sx={{ margin: 2 }}
 					required
 				/>
+				<TextField
+					label='Priority'
+					name='priority'
+					type='priority'
+					value={todo.priority}
+					onChange={handlePriorityInputChange}
+					sx={{ margin: 2 }}
+					required
+				/>
 				<TextareaAutosize
-					placeholder="Description..."
+					placeholder='Description...'
 					name='description'
 					type='description'
 					value={todo.description}

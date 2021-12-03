@@ -33,7 +33,7 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 							sx={{
 								fontSize: 18,
 								textDecoration: todo.completed ? 'line-through' : null,
-								flexShrink: 2
+								flexShrink: 2,
 							}}
 							color='text.secondary'
 							gutterBottom
@@ -49,7 +49,7 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 							textDecoration: todo.completed ? 'line-through' : null,
 							alignSelf: 'center',
 							pl: 5,
-							width: '80%'
+							width: '80%',
 						}}
 					>
 						{todo.description}
@@ -65,6 +65,19 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 							bgcolor: 'background.paper',
 						}}
 					>
+						<Typography
+							sx={{
+								fontSize: 14,
+								alignSelf: 'end',
+								textDecorationLine: 'underline',
+								textDecorationStyle: 'solid',
+								textDecorationColor: '#000',
+							}}
+							color='text.secondary'
+							gutterBottom
+						>
+							{todo.priority}
+						</Typography>
 						<Typography
 							sx={{
 								fontSize: 12,
